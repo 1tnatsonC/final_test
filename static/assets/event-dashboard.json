@@ -1,0 +1,38 @@
+[
+    {
+        "name": "TW Limited Express 105",
+        "location": "Keelung → Pingtung",
+        "depart_arriveTime": "06:12 → 12:33",
+        "type": "Available",
+        "price": "$80",
+        "image": "assets/PT8.jpg"
+    },
+    {
+        "name": "TW Limited Express 115",
+        "location": "Keelung → Pingtung",
+        "depart_arriveTime": "08:14 → 14:43",
+        "type": "Available",
+        "price": "$80",
+        "image": "assets/PT8.jpg"
+    },
+    {
+        "name": "TW Limited Express 117",
+        "location": "Keelung → Chaozhou",
+        "depart_arriveTime": "09:35 → 15:15",
+        "type": "Available",
+        "price": "$80",
+        "image": "assets/Chaozhou_Station.jpg"
+    },
+    {
+        "name": "TW Limited Express 145",
+        "location": "Keelung → Fangliao",
+        "depart_arriveTime": "13:14 → 19:07",
+        "type": "Available",
+        "price": "$80",
+        "image": "assets/Fangliao.jpg"
+    }
+
+
+    
+
+]

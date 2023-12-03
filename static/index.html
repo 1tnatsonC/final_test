@@ -1,0 +1,191 @@
+<!-- Chan Hou Ting Constant (21034774d) & Cheung Kwan Yui (21088966D)-->
+<!doctype html>
+<html>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script src="js\jquery-3.7.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    fetch('/auth/me')
+      .then((response) => {
+      if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Please login');
+    }
+    })
+    .then((data) => {
+    if (data.user.username !== "admin") {
+      var eventManagementLink = document.getElementById("eventManagement");
+      eventManagementLink.style.display = "none";
+      var seatManagementLink = document.getElementById("seatManagement");
+      seatManagementLink.style.display = "none";
+    }
+    })
+    .catch((error) => {
+    console.log(error);
+    });
+    </script>
+
+    <script>
+      fetch('/auth/me')
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error('Please login');
+    }
+  })
+  .then((data) => {
+    
+    const greetingElement = document.getElementById('greeting');
+    greetingElement.textContent = `Welcome back! ${data.user.nickname}`;
+
+    const NAME = document.getElementById('NAME');
+    NAME.placeholder = `${data.user.username}`;
+
+    const NICKNAME = document.getElementById('NICKNAME');
+    NICKNAME.placeholder = `${data.user.nickname}`;
+
+    const GENDER = document.getElementById('GENDER');
+    GENDER.placeholder = `${data.user.role}`;
+
+    const EMAIL = document.getElementById('EMAIL');
+    EMAIL.placeholder = `${data.user.email}`;
+
+    const BIRTHDATE = document.getElementById('BIRTHDATE');
+    BIRTHDATE.placeholder = `${data.user.birthdate}`;
+
+  
+  })
+  .catch((error) => {
+    alert(error.message);
+    window.open('/login.html', '_self');
+  });
+
+var idleTimeout = 10*1000;
+var idleTimer;
+
+function resetTimer() {
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(idlelogout, idleTimeout);
+}
+
+function idlelogout() {
+  alert('You have been logged out due to inactivity, please login again.');
+  window.location.href = '/login.html';
+}
+
+document.addEventListener('mousemove', resetTimer);
+document.addEventListener('keypress', resetTimer);
+document.addEventListener('click', resetTimer);
+
+resetTimer();
+//idlelogout();
+
+    </script>
+    
+  </title>
+    <style>
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+        .info {
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+
+  <header class="text-bg-dark p-3 text-center fw-bold fs-3">
+    Train Ticket Selling System
+    <h6 id="greeting" class="d-flex justify-content-end"></h6>
+  </header>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fw-bold">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link text-body-tertiary m-1" href="dashboard.html">Event Dashboard</a>
+          <a class="nav-link text-body-tertiary m-1" href="booking.html">Ticket Booking</a>
+          <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                <button class="nav-link active text-primary m-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">My Account</button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                  <li><a class="dropdown-item" href="index.html">User Profile</a></li>
+                  <li><input class="p-5 m-1 btn btn-secondary" type="button" value="Logout" id="logoutButton" onclick="logout()" /></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <a
+            class="nav-link text-body-tertiary m-1 eventManagement"
+            id="eventManagement"
+            href="eventManagement.html"
+            >Event Management</a >
+          <a
+            class="nav-link text-body-tertiary m-1 seatManagement"
+            id="seatManagement"
+            href="seatManagement.html"
+            >Seat Management</a>
+
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <h1>User Profile</h1>
+    <form>
+    <fieldset disabled>
+      <div class="info">
+        <label for="disabledTextField" class="form-label ">Name: </label>
+        <input type="text" id = "NAME" class="info" placeholder="Readonly input" readonly><br>
+        <label for="disabledTextField" class="form-label ">Nickname: </label>
+        <input type="text" id = "NICKNAME" class="info" placeholder="Readonly input" readonly><br>
+        <label for="disabledTextField" class="form-label ">Gender: </label>
+        <input type="text" id = "GENDER" class="info" placeholder="Readonly input" readonly><br>
+        <label for="disabledTextField" class="form-label ">Email: </label>
+        <input type="text" id = "EMAIL" class="info" placeholder="Readonly input" readonly><br>
+        <label for="disabledTextField" class="form-label ">Birth date: </label>
+        <input type="text" id = "BIRTHDATE" class="info" placeholder="Readonly input" readonly><br>
+        
+      </div>
+    </fieldset>
+  </form> <br>
+
+    
+    <main>
+      <section>
+        <footer class="page-footer fixed-bottom">
+          <div class="text-bg-dark p-3 text-center fs-6">
+            © 21034774d Chan Hou Ting Constant & 21088966d Cheung Kwan Yui - EIE4432 Group Project
+          </div>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

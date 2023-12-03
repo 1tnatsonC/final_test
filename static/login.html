@@ -1,0 +1,55 @@
+<!-- Chan Hou Ting Constant (21034774d) & Cheung Kwan Yui (21088966D)-->
+<!doctype html>
+<html>
+  <head>
+    <title>Login</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
+    <style>
+      container {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <header class="text-bg-dark p-3 text-center fw-bold fs-3">Train Ticket Selling System</header>
+    </div>
+    <div class="container">
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <h1 class="">Login</h1>
+      <form action="/auth/login" method="POST">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control w-50" id="username" name="username" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control w-50" id="password" name="password" />
+        </div>
+        <div class="form-group">
+          <br />
+          <div class="row mb-3 d-none message alert alert-success fs-6" id="liveAlertPlaceholder" role="alert"></div>
+          <input class="btn btn-primary" type="button" value="Login" id="loginButton" onclick="login()" />
+          <a href="register.html" input class="btn btn-secondary" type="button" value="Register" id="registerButton">Register</a>
+        </div>
+      </form>
+    </div>
+    <footer class="page-footer fixed-bottom">
+      <div class="text-bg-dark p-3 text-center fs-6">
+        © 21034774d Chan Hou Ting Constant & 21088966d Cheung Kwan Yui - EIE4432 Group Project
+      </div>
+    </footer>
+  </body>
+</html>
